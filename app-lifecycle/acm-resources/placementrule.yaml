@@ -4,9 +4,11 @@ metadata:
   name: etherpad-pr
   namespace: etherpad
 spec:
+  clusterReplicas: 1
   clusterConditions:
     - type: ManagedClusterConditionAvailable
       status: "True"
   clusterSelector:
     matchLabels:
       environment: dev
+      #vendor: OpenShift
