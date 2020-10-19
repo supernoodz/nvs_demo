@@ -1,0 +1,9 @@
+resources:
+- etherpad_configmap.yaml
+- etherpad_deployment.yaml
+- etherpad_route.yaml
+- etherpad_service.yaml
+- kustomization.yaml
+- postgres_deployment.yaml
+- postgres_secret.yaml
+- postgres_service.yaml
