@@ -1,43 +1,58 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: policy-trusted-node
+  name: upgrade-cluster
   annotations:
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/categories: CM Configuration Management
     policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
 spec:
-  remediationAction: inform
   disabled: false
   policy-templates:
     - objectDefinition:
-        apiVersion: policies.ibm.com/v1alpha1
-        kind: TrustedNodePolicy
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
         metadata:
-          name: example-trustednodepolicy
+          name: upgrade-cluster
         spec:
-          severity: low
           namespaceSelector:
-            include: ["default"]
+            exclude:
+              - kube-*
+            include:
+              - '*'
+          object-templates:
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: config.openshift.io/v1
+                kind: ClusterVersion
+                metadata:
+                  name: version
+                spec:
+                  channel: stable-4.5
+                  desiredUpdate:
+                    version: 4.5.13 
+                  upstream: 'https://api.openshift.com/api/upgrades_info/v1/graph'
           remediationAction: inform
+          severity: high
+  remediationAction: inform
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: binding-policy-trusted-node
+  name: binding-upgrade-cluster
 placementRef:
-  name: placement-policy-trusted-node
+  name: placement-upgrade-cluster
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-- name: policy-trusted-node
+- name: upgrade-cluster
   kind: Policy
   apiGroup: policy.open-cluster-management.io
 ---
 apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
-  name: placement-policy-trusted-node
+  name: placement-upgrade-cluster
 spec:
   clusterConditions:
   - status: "True"
