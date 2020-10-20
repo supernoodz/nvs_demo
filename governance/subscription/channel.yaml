@@ -5,4 +5,4 @@ metadata:
   namespace: acm-policies
 spec:
   type: GitHub
-  pathname: https://github.com/avaleror/acm-demo.git
+  pathname: https://github.com/avaleror/nvs_demo.git
