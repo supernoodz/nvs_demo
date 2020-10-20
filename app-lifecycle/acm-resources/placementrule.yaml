@@ -3,6 +3,8 @@ kind: PlacementRule
 metadata:
   name: etherpad-pr
   namespace: etherpad
+  labels:
+    app: etherpad-app 
 spec:
   clusterReplicas: 1
   clusterConditions:
