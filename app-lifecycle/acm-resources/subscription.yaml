@@ -8,7 +8,7 @@ metadata:
     app: etherpad-app
   annotations:
     apps.open-cluster-management.io/github-path: app-lifecycle/etherpad
-    #apps.open-cluster-management.io/github-branch: master
+    apps.open-cluster-management.io/github-branch: master
 spec:
   channel: etherpad/etherpad-app-latest
   placement:
