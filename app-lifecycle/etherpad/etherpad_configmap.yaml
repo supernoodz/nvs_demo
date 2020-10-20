@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   name: etherpad-settings
   labels:
-    app: etherpad
+    app: etherpad-app
 data:
   settings.json: |
     /*
