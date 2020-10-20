@@ -2,4 +2,5 @@
 
 ## TODO Finish this readme
 
-run `kubectl apply -k .` from within this directory in your terminal.
+- Log in the Hub cluster 
+- un `kubectl apply -k .` from within this directory in your terminal.
