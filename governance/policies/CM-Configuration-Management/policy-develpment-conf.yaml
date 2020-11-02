@@ -33,6 +33,32 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
+          name: development-quota
+        spec:
+          remediationAction: inform # will be overridden by remediationAction in parent policy
+          severity: high
+          namespaceSelector:
+            exclude: ["kube-*"]
+            include: ["default"]
+          object-templates:
+            apiVersion: v1
+            items:
+            - apiVersion: v1
+              kind: ResourceQuota
+              metadata:
+                name: core-object-quota
+                namespace: development
+              spec:
+                hard:
+                  configmaps: "15"
+                  persistentvolumeclaims: "5"
+                  replicationcontrollers: "40"
+                  secrets: "20"
+                  services: "20"
+    - objectDefinition:
+        apiVersion: policy.open-cluster-management.io/v1
+        kind: ConfigurationPolicy
+        metadata:
           name: podview-role
         spec:
           remediationAction: inform # will be overridden by remediationAction in parent policy
@@ -135,3 +161,4 @@ spec:
   clusterSelector:
     matchExpressions:
       - {key: environment, operator: In, values: ["dev"]}
+
