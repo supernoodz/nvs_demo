@@ -18,7 +18,7 @@ spec:
           name: development-namespace
         spec:
           remediationAction: inform # will be overridden by remediationAction in parent policy
-          severity: high
+          severity: medium
           namespaceSelector:
             exclude: ["kube-*"]
             include: ["default"]
@@ -36,25 +36,25 @@ spec:
           name: development-quota
         spec:
           remediationAction: inform # will be overridden by remediationAction in parent policy
-          severity: high
+          severity: medium
           namespaceSelector:
             exclude: ["kube-*"]
             include: ["default"]
           object-templates:
-            apiVersion: v1
-            items:
-            - apiVersion: v1
-              kind: ResourceQuota
-              metadata:
-                name: core-object-quota
-                namespace: development
-              spec:
-                hard:
-                  configmaps: "15"
-                  persistentvolumeclaims: "5"
-                  replicationcontrollers: "40"
-                  secrets: "20"
-                  services: "20"
+            - complianceType: musthave
+              objectDefinition:
+                apiVersion: v1
+                kind: ResourceQuota
+                metadata:
+                  name: core-object-quota
+                  namespace: development
+                spec:
+                  hard:
+                    configmaps: "15"
+                    persistentvolumeclaims: "5"
+                    replicationcontrollers: "40"
+                    secrets: "20"
+                    services: "20"
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
@@ -62,7 +62,7 @@ spec:
           name: podview-role
         spec:
           remediationAction: inform # will be overridden by remediationAction in parent policy
-          severity: high
+          severity: medium
           namespaceSelector:
             exclude: ["kube-*"]
             include: ["default"]
@@ -88,7 +88,7 @@ spec:
           name: developer-binding
         spec:
           remediationAction: inform # will be overridden by remediationAction in parent policy
-          severity: high
+          severity: medium
           namespaceSelector:
             exclude: ["kube-*"]
             include: ["default"]
@@ -115,7 +115,7 @@ spec:
           name: observer-binding
         spec:
           remediationAction: inform # will be overridden by remediationAction in parent policy
-          severity: high
+          severity: medium
           namespaceSelector:
             exclude: ["kube-*"]
             include: ["default"]
