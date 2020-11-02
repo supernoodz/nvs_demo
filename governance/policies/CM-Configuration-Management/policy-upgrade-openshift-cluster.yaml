@@ -32,7 +32,7 @@ spec:
                   desiredUpdate:
                     version: 4.5.16
                   upstream: 'https://api.openshift.com/api/upgrades_info/v1/graph'
-          remediationAction: inform
+          remediationAction: enforce
           severity: high
   remediationAction: inform
 ---
