@@ -6,7 +6,7 @@
     slack_token: T01DXJFQCJJ/B01EH1Q4CQZ/p5VEW2E4NlwHEE9D38gStzoT
     
   collections:
-    - community.general
+    - community.general.slack
     
   tasks:
     - name: community.general.slack
