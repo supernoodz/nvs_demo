@@ -1,15 +1,18 @@
 ---
 - name: Test Slack Integration Module
   hosts: localhost
+  
   vars:
-    - slack_token: T01DXJFQCJJ/B01EH1Q4CQZ/p5VEW2E4NlwHEE9D38gStzoT
+    slack_token: T01DXJFQCJJ/B01EH1Q4CQZ/p5VEW2E4NlwHEE9D38gStzoT
+    
   collections:
     - community.general
+    
   tasks:
-  - import_role: 
-      name: community.general.slack
-  - name: Send notification message via Slack
-    community.general.slack:
-      token: "{{slack_token}}"
-      msg: 'This is a message generatd with Ansible!!'
-    delegate_to: localhost
+    - import_role: 
+        name: community.general.slack
+    - name: Send notification message via Slack
+      community.general.slack:
+        token: "{{slack_token}}"
+        msg: 'This is a message generatd with Ansible!!'
+      delegate_to: localhost
