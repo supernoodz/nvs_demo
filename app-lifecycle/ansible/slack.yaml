@@ -9,10 +9,12 @@
     - community.general
     
   tasks:
-    - import_role: 
-      name: community.general.slack
+    - name: community.general.slack
+      import_role:
+        name: community.general.slack
+      
     - name: Send notification message via Slack
       community.general.slack:
         token: "{{slack_token}}"
-        msg: 'This is a message generatd with Ansible!!'
+        msg: 'This is a message generate with Ansible!!'
       delegate_to: localhost
