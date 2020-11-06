@@ -1,20 +1,9 @@
 ---
-- name: Test Slack Integration Module
-  hosts: localhost
-  
-  vars:
-    slack_token: T01DXJFQCJJ/B01EH1Q4CQZ/p5VEW2E4NlwHEE9D38gStzoT
-    
-  collections:
-    - community.general.slack
+- hosts: localhost
     
   tasks:
-    - name: community.general.slack
-      import_role:
-        name: community.general.slack
-      
     - name: Send notification message via Slack
-      community.general.slack:
-        token: "{{slack_token}}"
-        msg: 'This is a message generate with Ansible!!'
-      delegate_to: localhost
+      slack:
+        channel: #testing
+        username: ncatling@redhat.com
+        webhook_url: https://hooks.slack.com/services/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
