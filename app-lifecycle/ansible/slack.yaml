@@ -4,6 +4,6 @@
   tasks:
     - name: Send notification message via Slack
       slack:
-        channel: #testing
+        channel: '#testing'
         username: ncatling@redhat.com
-        webhook_url: https://hooks.slack.com/services/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
+        token: T01DXJFQCJJ/B01EH1Q4CQZ/p5VEW2E4NlwHEE9D38gStzoT
