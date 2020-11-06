@@ -3,7 +3,8 @@
   hosts: localhost
   vars:
     - slack_token: T01DXJFQCJJ/B01EH1Q4CQZ/p5VEW2E4NlwHEE9D38gStzoT
- 
+  roles:
+  - community.general
   tasks:
   - name: Send notification message via Slack
     community.general.slack:
